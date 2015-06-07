@@ -19,4 +19,5 @@ def main():
     os.system(dateCommand)
     os.system(timeCommand)
 
-main()
+if __name__ == '__main__':
+    main()

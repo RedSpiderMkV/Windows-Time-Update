@@ -14,7 +14,7 @@ class timeSync:
         self.dateTime = json.loads(timeJson)['time']
         
     def printTimeStr(self):
-        print self.dateTime
+        print(self.dateTime)
         
     def getTimeWithTimezoneOffset(self, timezoneOffset):
         t = datetime.strptime(self.dateTime, '%Y-%m-%d %H:%M:%S %Z')
