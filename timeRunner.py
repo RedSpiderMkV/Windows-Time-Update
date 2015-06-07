@@ -1,8 +1,11 @@
 
 import os
+import time
 from windowsTimeSync import timeSync
 
 def main():
+    time.sleep(10)
+    
     timeSyncer = timeSync()
     timeVal = timeSyncer.getTimeWithTimezoneOffset(1)
     dateTime = timeVal.split(' ')
