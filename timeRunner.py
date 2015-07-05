@@ -5,6 +5,7 @@ import socket
 from windowsTimeSync import timeSync
 
 REMOTE_SERVER = "www.google.com"
+
 def is_connected():
   try:
     # see if we can resolve the host name -- tells us if there is
