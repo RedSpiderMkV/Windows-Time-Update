@@ -17,7 +17,7 @@ class timeSync:
         print(self.dateTime)
         
     def getTimeWithTimezoneOffset(self, timezoneOffset):
-        t = datetime.strptime(self.dateTime, '%Y-%m-%d %H:%M:%S %Z')
+        t = datetime.strptime(self.dateTime, '%d-%m-%Y %H:%M:%S %Z')
         t = t + timedelta(hours=timezoneOffset)
         validatedTime = '%d-%02d-%02d %02d:%02d:%02d' % (t.year, t.month, t.day, t.hour, t.minute, t.second)
         
