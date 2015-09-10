@@ -4,15 +4,15 @@ import time
 import socket
 from windowsTimeSync import timeSync
 
-REMOTE_SERVER = "www.google.com"
+REMOTE_ADDRESS = "www.google.com"
 
 def is_connected():
   try:
     # see if we can resolve the host name -- tells us if there is
     # a DNS listening
-    host = socket.gethostbyname(REMOTE_SERVER)
+    host = socket.gethostbyname(REMOTE_ADDRESS)
     # connect to the host -- tells us if the host is reachable
-    s = socket.create_connection((host, 80), 2)
+    socket.create_connection((host, 80), 2)
     return True
   except:
      return False
