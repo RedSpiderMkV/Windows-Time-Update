@@ -9,4 +9,6 @@ This little script simply gets the time from a server (located at www.portvisibi
 ###Usage
 
 Place the script in the startup folder and it'll run on boot.
-Only tested on Windows XP, not sure if UAC will kick in if run on Vista and above.
+
+Works on Windows XP.
+Not working on Vista or above as UAC kicks in, preventing the time/date update command from being run.
