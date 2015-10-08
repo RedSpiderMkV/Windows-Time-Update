@@ -20,7 +20,7 @@ def is_connected():
 def checkConnection():
     attempt = 0
     while not is_connected():
-        # after 10 tries, give up
+        # after 10 tries, consider connection failed.
         if attempt >= 10:
             return False;
 
