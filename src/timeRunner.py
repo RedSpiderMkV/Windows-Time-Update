@@ -17,15 +17,21 @@ def is_connected():
   except:
      return False
 
-def main():
+def checkConnection():
     attempt = 0
     while not is_connected():
         # after 10 tries, give up
         if attempt >= 10:
-            return;
+            return False;
 
         time.sleep(10)
         attempt += 1
+								
+    return True
+
+def main():
+    if not checkConnection():
+        return
 
     timeSyncer = timeSync()
     timeVal = timeSyncer.getTimeWithTimezoneOffset(1)
