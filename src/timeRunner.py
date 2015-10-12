@@ -43,8 +43,9 @@ def main():
     dateCommand = 'date ' + formattedDate
     timeCommand = 'time ' + dateTime[1]
 
-    os.system(dateCommand)
-    os.system(timeCommand)
+    #os.system(dateCommand)
+    #os.system(timeCommand)
+    print timeCommand, dateCommand
 
 if __name__ == '__main__':
     main()
