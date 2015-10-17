@@ -38,8 +38,7 @@ namespace WindowsTimeSyncLib
                 DateTime date = DateTime.ParseExact(ob["date"], "yyyy-MM-dd", null);
 
                 TimeZoneInfo zone = TimeZoneInfo.Local;
-                int offset = zone.GetUtcOffset(new DateTime()).Seconds;
-                time = time.AddSeconds(offset);
+                time = time.AddSeconds(zone.GetUtcOffset(new DateTime()).Seconds);
 
                 if (zone.IsDaylightSavingTime(date.Add(new TimeSpan(time.Ticks))))
                 {
