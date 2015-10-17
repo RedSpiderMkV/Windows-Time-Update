@@ -37,6 +37,15 @@ namespace WindowsTimeSyncLib
                 DateTime time = DateTime.ParseExact(ob["time"].Replace(" UTC", ""), "HH:mm:ss", null);
                 DateTime date = DateTime.ParseExact(ob["date"], "yyyy-MM-dd", null);
 
+                TimeZoneInfo zone = TimeZoneInfo.Local;
+                int offset = zone.GetUtcOffset(new DateTime()).Seconds;
+                time = time.AddSeconds(offset);
+
+                if (zone.IsDaylightSavingTime(date.Add(new TimeSpan(time.Ticks))))
+                {
+                    time = time.AddHours(1);
+                } // end if
+
                 DateTimeContainer container = new DateTimeContainer(date, time);
                 return container;
             }
