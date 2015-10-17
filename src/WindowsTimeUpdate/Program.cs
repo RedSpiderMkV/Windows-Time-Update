@@ -27,23 +27,20 @@ namespace WindowsTimeUpdate
 
         static void Main(string[] args)
         {
-            if (!isNetworkActive())
+            if (isNetworkActive())
             {
-                return;
-            } // end if
-            
-            using (TimeSyncLib syncLib = new TimeSyncLib())
-            {
-                DateTimeContainer dateTimeContainer = syncLib.GetDateTime();
-                DateTimeProcessRunner processRunner = new DateTimeProcessRunner();
-
-                if (dateTimeContainer != null)
+                using (TimeSyncLib syncLib = new TimeSyncLib())
                 {
-                    processRunner.RunDateTimeCommandProcess("/C time " + dateTimeContainer.Time.ToShortTimeString());
-                    processRunner.RunDateTimeCommandProcess("/C date " + dateTimeContainer.Date.ToShortDateString());
-                } // end if
-            } // end using
+                    DateTimeContainer dateTimeContainer = syncLib.GetDateTime();
+                    DateTimeProcessRunner processRunner = new DateTimeProcessRunner();
 
+                    if (dateTimeContainer != null)
+                    {
+                        processRunner.RunDateTimeCommandProcess("/C time " + dateTimeContainer.Time.ToShortTimeString());
+                        processRunner.RunDateTimeCommandProcess("/C date " + dateTimeContainer.Date.ToShortDateString());
+                    } // end if
+                } // end using
+            } // end if
         } // end method
     } // end class
 } // end namespace
