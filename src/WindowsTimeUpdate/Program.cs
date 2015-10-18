@@ -11,16 +11,18 @@ namespace WindowsTimeUpdate
     {
         static void Main(string[] args)
         {
-            TimeSyncLib syncLib = new TimeSyncLib();
-            DateTimeContainer dateTimeContainer = syncLib.GetDateTime();
-
-            if (dateTimeContainer != null)
+            using (TimeSyncLib syncLib = new TimeSyncLib())
             {
-                Console.WriteLine(dateTimeContainer.Date);
-                Console.WriteLine(dateTimeContainer.Time);
-            } // end if
+                DateTimeContainer dateTimeContainer = syncLib.GetDateTime();
+                DateTimeProcessRunner processRunner = new DateTimeProcessRunner();
 
-            Console.ReadKey();
+                if (dateTimeContainer != null)
+                {
+                    processRunner.RunDateTimeCommandProcess("/C time " + dateTimeContainer.Time.ToShortTimeString());
+                    processRunner.RunDateTimeCommandProcess("/C date " + dateTimeContainer.Date.ToShortDateString());
+                } // end if
+            } // end using
+
         } // end method
     } // end class
 } // end namespace

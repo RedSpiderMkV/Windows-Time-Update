@@ -11,11 +11,20 @@ namespace WindowsTimeSyncLib
     {
         #region Public Methods
 
+        /// <summary>
+        /// Instantiate a new time sync lib object to retrieve an object representing
+        /// the date and time on the server.
+        /// </summary>
         public TimeSyncLib()
         {
             webClient_m = new WebClient();
         } // end method
 
+        /// <summary>
+        /// Get date time container object with date and time set from values
+        /// on server.
+        /// </summary>
+        /// <returns>Date time container.</returns>
         public DateTimeContainer GetDateTime()
         {
             try
@@ -25,7 +34,10 @@ namespace WindowsTimeSyncLib
                 JavaScriptSerializer jsonManager = new JavaScriptSerializer();
                 Dictionary<string, string> ob = jsonManager.Deserialize<Dictionary<string, string>>(response);
 
-                DateTimeContainer container = new DateTimeContainer(ob["date"], ob["time"]);
+                DateTime time = DateTime.ParseExact(ob["time"].Replace(" UTC", ""), "HH:mm:ss", null);
+                DateTime date = DateTime.ParseExact(ob["date"], "yyyy-MM-dd", null);
+
+                DateTimeContainer container = new DateTimeContainer(date, time);
                 return container;
             }
             catch (Exception e)
@@ -37,6 +49,9 @@ namespace WindowsTimeSyncLib
             return null;
         } // end method
 
+        /// <summary>
+        /// Dispose of the time sync library.
+        /// </summary>
         public void Dispose()
         {
             if (webClient_m != null)
@@ -49,8 +64,10 @@ namespace WindowsTimeSyncLib
 
         #region Private Data
 
+        // Server url.
         private const string syncUrl_c = @"http://www.portvisibility.co.uk/visibility/tools/showTime.php";
-
+        
+        // Web client used to access server.
         private WebClient webClient_m;
 
         #endregion

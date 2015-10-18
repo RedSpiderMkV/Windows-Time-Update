@@ -9,14 +9,26 @@ namespace WindowsTimeSyncLib
     {
         #region Properties
 
-        public string Date { get; private set; }
-        public string Time { get; private set; }
+        /// <summary>
+        /// Date.
+        /// </summary>
+        public DateTime Date { get; private set; }
+
+        /// <summary>
+        /// Time.
+        /// </summary>
+        public DateTime Time { get; private set; }
 
         #endregion
 
         #region Public Methods
 
-        public DateTimeContainer(string date, string time)
+        /// <summary>
+        /// Instantiate new date time container.
+        /// </summary>
+        /// <param name="date">Date.</param>
+        /// <param name="time">Time.</param>
+        public DateTimeContainer(DateTime date, DateTime time)
         {
             Date = date;
             Time = time;
