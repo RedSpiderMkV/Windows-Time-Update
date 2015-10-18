@@ -20,7 +20,7 @@ namespace WindowsTimeUpdate
             {
                 ProcessStartInfo procStartInfo = new ProcessStartInfo()
                 {
-                    UseShellExecute = true,
+                    UseShellExecute = false,
                     CreateNoWindow = true,
                     FileName = @"C:\Windows\System32\cmd.exe",
                     Arguments = command
