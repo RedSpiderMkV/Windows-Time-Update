@@ -12,3 +12,5 @@ Place the script in the startup folder and it'll run on boot.
 
 Works on Windows XP.
 Not working on Vista or above as UAC kicks in, preventing the time/date update command from being run.
+
+But if Windows Vista or above is the OS, its unlikely the CMOS battery is irreplaceable so this isn't required :)
