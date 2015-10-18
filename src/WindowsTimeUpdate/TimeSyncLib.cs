@@ -34,19 +34,18 @@ namespace WindowsTimeSyncLib
                 JavaScriptSerializer jsonManager = new JavaScriptSerializer();
                 Dictionary<string, string> ob = jsonManager.Deserialize<Dictionary<string, string>>(response);
 
-                DateTime time = DateTime.ParseExact(ob["time"].Replace(" UTC", ""), "HH:mm:ss", null);
-                DateTime date = DateTime.ParseExact(ob["date"], "yyyy-MM-dd", null);
+                string dateTimeStr = ob["date"] + " " + ob["time"].Replace(" UTC", "");
+                DateTime dateTime = DateTime.ParseExact(dateTimeStr, "yyyy-MM-dd HH:mm:ss", null);
 
                 TimeZoneInfo zone = TimeZoneInfo.Local;
-                time = time.AddSeconds(zone.GetUtcOffset(new DateTime()).Seconds);
+                dateTime = dateTime.AddSeconds(zone.GetUtcOffset(new DateTime()).Seconds);
 
-                if (zone.IsDaylightSavingTime(date.Add(new TimeSpan(time.Ticks))))
+                if (zone.IsDaylightSavingTime(dateTime))
                 {
-                    time = time.AddHours(1);
+                    dateTime = dateTime.AddHours(1);
                 } // end if
 
-                DateTimeContainer container = new DateTimeContainer(date, time);
-                return container;
+                return new DateTimeContainer(dateTime);
             }
             catch (Exception e)
             {

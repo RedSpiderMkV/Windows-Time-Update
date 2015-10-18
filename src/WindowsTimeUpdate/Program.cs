@@ -36,8 +36,8 @@ namespace WindowsTimeUpdate
 
                     if (dateTimeContainer != null)
                     {
-                        processRunner.RunDateTimeCommandProcess("/C time " + dateTimeContainer.Time.ToShortTimeString());
-                        processRunner.RunDateTimeCommandProcess("/C date " + dateTimeContainer.Date.ToShortDateString());
+                        processRunner.RunDateTimeCommandProcess("/C time " + dateTimeContainer.DateTime.ToShortTimeString());
+                        processRunner.RunDateTimeCommandProcess("/C date " + dateTimeContainer.DateTime.ToShortDateString());
                     } // end if
                 } // end using
             } // end if

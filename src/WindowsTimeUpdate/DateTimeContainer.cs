@@ -10,14 +10,9 @@ namespace WindowsTimeSyncLib
         #region Properties
 
         /// <summary>
-        /// Date.
+        /// Date time.
         /// </summary>
-        public DateTime Date { get; private set; }
-
-        /// <summary>
-        /// Time.
-        /// </summary>
-        public DateTime Time { get; private set; }
+        public DateTime DateTime { get; private set; }
 
         #endregion
 
@@ -26,12 +21,10 @@ namespace WindowsTimeSyncLib
         /// <summary>
         /// Instantiate new date time container.
         /// </summary>
-        /// <param name="date">Date.</param>
-        /// <param name="time">Time.</param>
-        public DateTimeContainer(DateTime date, DateTime time)
+        /// <param name="dateTime">Date and time.</param>
+        public DateTimeContainer(DateTime dateTime)
         {
-            Date = date;
-            Time = time;
+            DateTime = dateTime;
         } // end method
 
         #endregion
