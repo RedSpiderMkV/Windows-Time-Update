@@ -3,31 +3,17 @@ using System.Collections.Generic;
 using System.Net.NetworkInformation;
 
 using WindowsTimeSyncLib;
+using NetworkCheck;
 
 namespace WindowsTimeUpdate
 {
     class Program
     {
-        private static bool isNetworkActive()
-        {
-            int count = 0;
-            while (!NetworkInterface.GetIsNetworkAvailable())
-            {
-                if (count > 3)
-                {
-                    return false;
-                } // end if
-
-                System.Threading.Thread.Sleep(10);
-                count++;
-            } // end while
-
-            return true;
-        } // end method
-
         static void Main(string[] args)
         {
-            if (isNetworkActive())
+            NetworkAvailibilityChecker networkChecker = new NetworkAvailibilityChecker(3);
+
+            if (networkChecker.IsNetworkActive())
             {
                 using (TimeSyncLib syncLib = new TimeSyncLib())
                 {

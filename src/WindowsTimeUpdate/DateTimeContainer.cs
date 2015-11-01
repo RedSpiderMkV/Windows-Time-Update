@@ -5,6 +5,10 @@ using System.Text;
 
 namespace WindowsTimeSyncLib
 {
+    /// <summary>
+    /// DateTime isn't nullable.  This object needs to be capable of being null.
+    /// May be another way using a nullable DateTime but this works so going with it.
+    /// </summary>
     internal class DateTimeContainer
     {
         #region Properties

@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="DateTimeContainer.cs" />
     <Compile Include="DateTimeProcessRunner.cs" />
+    <Compile Include="NetworkAvailibilityChecker.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TimeSyncLib.cs" />
