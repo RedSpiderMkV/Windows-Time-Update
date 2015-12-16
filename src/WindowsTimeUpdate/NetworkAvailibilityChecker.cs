@@ -31,7 +31,7 @@ namespace NetworkCheck
                     return false;
                 } // end if
 
-                Thread.Sleep(10);
+                Thread.Sleep(10 * 1000); // wait 10 seconds
                 count++;
             } // end while
 
