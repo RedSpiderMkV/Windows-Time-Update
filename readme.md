@@ -6,7 +6,7 @@ In my situation, the battery is also not replaceable.  As a result, I'm stuck wi
 
 This little script simply gets the time from a server (located at www.portvisibility.co.uk ) over HTTP and sets the time on the machine at startup using the built in windows commands.
 
-###Usage
+### Usage
 
 Place the script in the startup folder and it'll run on boot.
 
